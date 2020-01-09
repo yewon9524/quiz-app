@@ -6,3 +6,15 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+* {
+  box-sizing: border-box;
+}
+
+#quiz_box{
+  display: flex;
+  border: 10px solid  black;
+  background-color: gray;
+  height: 75px;
+  padding: 15px;
+  margin: 10%;
+}
