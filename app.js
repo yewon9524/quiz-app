@@ -71,10 +71,11 @@ const STORE = {
       feedback: 'The correct annswer is Cow'
     }
   ],
-  quizStarted: 'false',
+  quizStarted: false,
   questionNumber: 0,
   score: 0
 };
+
 
 /*  Generate all HTML contents in the app  */
 
@@ -94,10 +95,11 @@ function generateStartPage() {
   /*question page
       generates all HTML contents in question page*/
 function questionPage() {
-console.log('question page running');
-  function generateQuestions() {
+// console.log('question page running');
+  
+// function generateQuestions() {
     return `<p>testttt</p>`;
-  }
+  // }
 
   // function generateAnswers() {
   //   const answers = STORE.questions[STORE.currentQuestion].answers
@@ -122,13 +124,13 @@ console.log('question page running');
 /*  Render functions  */ 
 function renderFunctions() {
   
-  if (STORE.quizStarted === 'false') {
+  if (STORE.quizStarted === false) {
     $('main').html(generateStartPage());
     return;
   }
 
-  else if (STORE.quizStared === 'true') {
-    generateQuestions();
+  else if (STORE.quizStarted === true) {
+    $('main').html(questionPage());
     return;
   }
 }
@@ -136,12 +138,12 @@ function renderFunctions() {
 /*  handle functions */
 function handleStartButton() {
   $('main').on('click', '#start', function(event) {
-    STORE.quizStarted === 'true';
+    STORE.quizStarted = true;
     renderFunctions();
-    console.log(STORE.quizStared);
-    console.log('handleStartButton running')
-  });
-};
+    questionPage();
+    console.log('handleStartButton running');
+  }); 
+}
 
 
 function letsRunIt() {
