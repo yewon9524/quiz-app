@@ -71,40 +71,72 @@ const STORE = {
       feedback: 'The correct annswer is Cow'
     }
   ],
+  quizStarted: false;
   questionNumber: 0,
   score: 0
 };
 
+/*  Generate all HTML contents in the app  */
+
+  /*start page
+      generates HTML for start page */
+function generateStartPage() {
+  return `
+    <div class='startPage'>
+      <p>Old MacDonald Quiz</p>
+      <button id='start' type="button">Let's Begin!</button>
+    </div>
+    `;
 
 
-function renderStartPage() {
-  $('#main').append(
-  `<button id='start' type="button">Let's Begin!</button>`);
-};
-renderStartPage();
+
+  /*question page
+      generates all HTML contents in question page*/
+function generateQuestions() {
+}
+function generateAnswers() {
+  const answers = STORE.questions[STORE.currentQuestion].answers
+}
+function generateProgress() {
+}
+function generateScore() {
+}
+
+  /*Feedback page
+      generates all HTML contents in question page*/
+function generateFeedback() {
+}
+
+  /*Result page
+      generates all HTML contents in question page*/
+function generateResultPage() {
+}
 
 
+/*  Render functions  */ 
+function renderFunctions() {
+}
 
-//when user clicks start button, should render question page
-function renderQuestionPage() {
-  console.log('renderQuestionPage works');
 
-};
-function renderFeedbackCorrectPage();
-function renderFeedbackWrongPage();
-function renderFinalPage();
+/*  handle functions */
+function handleStartButton() {
+  $('main').on('click', '#start', function(event) {
+        STORE.quizStarted = true;
+        renderFunctions();
+      });
+}
+function handleAnswerSubmit() {
+}
+function handleNextButton() {
+}
 
-function startButton() {
-  $('#start').on('click', function() {
-    event.preventDefault();
-  } )
-};
-function renderQuestion();
-function renderMultipleChoice();
-function renderCorrectAnswer();
-function renderQuestionNumber();
-function renderCurrentScore();
-function renderNextButton();
+function handle() {
+  handleStartButton();
+  handleAnswerSubmit();
+  handleNextButton();
+  handleRestartButton();
+}
+
 
 
 // breakdown of this app:
