@@ -94,31 +94,51 @@ function generateStartPage() {
 
   /*question page
       generates all HTML contents in question page*/
-function questionPage() {
-// console.log('question page running');
-  
-// function generateQuestions() {
-    return `<p>testttt</p>`;
-  // }
-
-  // function generateAnswers() {
-  //   const answers = STORE.questions[STORE.currentQuestion].answers
-  // }
-  // function generateProgress() {
-  // }
-  // function generateScore() {
-  // }
+function generateQuestions() {
+  let currentQuestion = STORE.questions[STORE.questionNumber].question;
+return currentQuestion;
 }
 
-//   /*Feedback page
-//       generates all HTML contents in question page*/
-// function generateFeedback() {
-// }
+function generateAnswers() {
+  const answers = STORE.questions[STORE.questionNumber].answers;
+  let i =0;
 
-//   /*Result page
-//       generates all HTML contents in question page*/
-// function generateResultPage() {
-// }
+  answers.forEach(answer => {
+
+  })
+
+  return; 
+}
+
+function questionPage() {
+  return `
+    <div class='QuestionPage'>
+      <p>${generateQuestions()}</p>
+      <p>${generateAnswers()}</p>
+      <button id='submit' type="button">Submit</button>
+    
+    </div>
+    `;
+}
+  
+
+
+  
+  function generateProgress() {
+  }
+  function generateScore() {
+  }
+
+
+  /*Feedback page
+      generates all HTML contents in question page*/
+function generateFeedback() {
+}
+
+  /*Result page
+      generates all HTML contents in question page*/
+function generateResultPage() {
+}
 
 
 /*  Render functions  */ 
@@ -149,17 +169,11 @@ function handleStartButton() {
 function letsRunIt() {
 renderFunctions();
 handleStartButton();
+
 }
 
 $(letsRunIt);
 
-
-
-// }
-// function handleAnswerSubmit() {
-// }
-// function handleNextButton() {
-// }
 
 // function handle() {
 //   handleStartButton();
