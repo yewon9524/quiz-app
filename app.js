@@ -71,7 +71,7 @@ const STORE = {
       feedback: 'The correct annswer is Cow'
     }
   ],
-  quizStarted: false,
+  quizStarted: 'false',
   questionNumber: 0,
   score: 0
 };
@@ -83,26 +83,30 @@ const STORE = {
 function generateStartPage() {
   return `
     <div class='startPage'>
-      <p>Old MacDonald Quiz</p>
+      <p>Old MACDONALD had a farm<br/>
+      E-I-E-I-O<br/>
+      And on his farm he had a...</p>
       <button id='start' type="button">Let's Begin!</button>
     </div>
     `;
 }
 
+  /*question page
+      generates all HTML contents in question page*/
+function questionPage() {
+console.log('question page running');
+  function generateQuestions() {
+    return `<p>testttt</p>`;
+  }
 
-
-
-//   /*question page
-//       generates all HTML contents in question page*/
-// function generateQuestions() {
-// }
-// function generateAnswers() {
-//   const answers = STORE.questions[STORE.currentQuestion].answers
-// }
-// function generateProgress() {
-// }
-// function generateScore() {
-// }
+  // function generateAnswers() {
+  //   const answers = STORE.questions[STORE.currentQuestion].answers
+  // }
+  // function generateProgress() {
+  // }
+  // function generateScore() {
+  // }
+}
 
 //   /*Feedback page
 //       generates all HTML contents in question page*/
@@ -117,24 +121,38 @@ function generateStartPage() {
 
 /*  Render functions  */ 
 function renderFunctions() {
-  console.log(STORE.quizStarted);
-  if (STORE.quizStarted === false) {
+  
+  if (STORE.quizStarted === 'false') {
     $('main').html(generateStartPage());
     return;
   }
-  
+
+  else if (STORE.quizStared === 'true') {
+    generateQuestions();
+    return;
+  }
 }
 
 /*  handle functions */
 function handleStartButton() {
   $('main').on('click', '#start', function(event) {
-    STORE.quizStarted = true;
+    STORE.quizStarted === 'true';
     renderFunctions();
-    console.log('running')
+    console.log(STORE.quizStared);
+    console.log('handleStartButton running')
   });
 };
 
-$(renderFunctions);
+
+function letsRunIt() {
+renderFunctions();
+handleStartButton();
+}
+
+$(letsRunIt);
+
+
+
 // }
 // function handleAnswerSubmit() {
 // }
