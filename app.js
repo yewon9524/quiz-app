@@ -100,14 +100,16 @@ return currentQuestion;
 }
 
 function generateAnswers() {
-  const answers = STORE.questions[STORE.questionNumber].answers;
-  let i =0;
-
-  answers.forEach(answer => {
-
-  })
-
-  return; 
+  const answers1 = STORE.questions[STORE.questionNumber].answers[0];
+  const answers2 = STORE.questions[STORE.questionNumber].answers[1];
+  const answers3 = STORE.questions[STORE.questionNumber].answers[2];
+  const answers4 = STORE.questions[STORE.questionNumber].answers[3];
+  const answers5 = STORE.questions[STORE.questionNumber].answers[4]; 
+  return `<input type='radio' value='answer'>${answers1}</br>` +
+  `<input type='radio' value='answer'>${answers2}</br>` +
+  `<input type='radio' value='answer'>${answers3}</br>` +
+  `<input type='radio' value='answer'>${answers4}</br>` +
+  `<input type='radio' value='answer'>${answers5}</br>`;
 }
 
 function questionPage() {
