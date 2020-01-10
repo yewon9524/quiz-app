@@ -71,14 +71,14 @@ const STORE = {
       feedback: 'The correct annswer is Cow'
     }
   ],
-  quizStarted: false;
+  quizStarted: false,
   questionNumber: 0,
   score: 0
 };
 
 /*  Generate all HTML contents in the app  */
 
-  /*start page
+/*start page
       generates HTML for start page */
 function generateStartPage() {
   return `
@@ -87,56 +87,66 @@ function generateStartPage() {
       <button id='start' type="button">Let's Begin!</button>
     </div>
     `;
+}
+
 
 
 
-  /*question page
-      generates all HTML contents in question page*/
-function generateQuestions() {
-}
-function generateAnswers() {
-  const answers = STORE.questions[STORE.currentQuestion].answers
-}
-function generateProgress() {
-}
-function generateScore() {
-}
+//   /*question page
+//       generates all HTML contents in question page*/
+// function generateQuestions() {
+// }
+// function generateAnswers() {
+//   const answers = STORE.questions[STORE.currentQuestion].answers
+// }
+// function generateProgress() {
+// }
+// function generateScore() {
+// }
 
-  /*Feedback page
-      generates all HTML contents in question page*/
-function generateFeedback() {
-}
+//   /*Feedback page
+//       generates all HTML contents in question page*/
+// function generateFeedback() {
+// }
 
-  /*Result page
-      generates all HTML contents in question page*/
-function generateResultPage() {
-}
+//   /*Result page
+//       generates all HTML contents in question page*/
+// function generateResultPage() {
+// }
 
 
 /*  Render functions  */ 
 function renderFunctions() {
+  console.log(STORE.quizStarted);
+  if (STORE.quizStarted === false) {
+    $('main').html(generateStartPage());
+    return;
+  }
+  
 }
-
 
 /*  handle functions */
 function handleStartButton() {
   $('main').on('click', '#start', function(event) {
-        STORE.quizStarted = true;
-        renderFunctions();
-      });
-}
-function handleAnswerSubmit() {
-}
-function handleNextButton() {
-}
+    STORE.quizStarted = true;
+    renderFunctions();
+    console.log('running')
+  });
+};
 
-function handle() {
-  handleStartButton();
-  handleAnswerSubmit();
-  handleNextButton();
-  handleRestartButton();
-}
+$(renderFunctions);
+// }
+// function handleAnswerSubmit() {
+// }
+// function handleNextButton() {
+// }
 
+// function handle() {
+//   handleStartButton();
+//   handleAnswerSubmit();
+//   handleNextButton();
+//   handleRestartButton();
+// }
 
 
 // breakdown of this app:
