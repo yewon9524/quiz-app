@@ -78,19 +78,27 @@ const STORE = {
 
 
 function renderStartPage() {
-  $('.start-page').html(
-  `<header class='quiz-name' role='banner'>
-          <h1>Old MacDonald Quiz</h1>
-      </header>
-      <button id='start' type="button">Let's Begin!</button>`);
+  $('#main').append(
+  `<button id='start' type="button">Let's Begin!</button>`);
 };
+renderStartPage();
 
-function renderQuestionPage();
+
+
+//when user clicks start button, should render question page
+function renderQuestionPage() {
+  console.log('renderQuestionPage works');
+
+};
 function renderFeedbackCorrectPage();
 function renderFeedbackWrongPage();
 function renderFinalPage();
 
-
+function startButton() {
+  $('#start').on('click', function() {
+    event.preventDefault();
+  } )
+};
 function renderQuestion();
 function renderMultipleChoice();
 function renderCorrectAnswer();
