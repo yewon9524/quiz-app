@@ -1,33 +1,120 @@
+/* eslint-disable strict */
 /**
  * Example store structure
  */
-const store = {
+const STORE = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color is broccoli?',
+      id: 1,
+      question: 'Which of the following animal went “oink oink”?',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'Cow',
+        'Pig',
+        'Duck',
+        'Horse',
+        'Lamb'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'Pig',
+      feedback: 'The correct annswer is Pig'
     },
     {
-      question: 'What is the current year?',
+      id: 2,
+      question: 'Which of the following animal went “quack quack” ?',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'Cow',
+        'Pig',
+        'Duck',
+        'Horse',
+        'Lamb'
       ],
-      correctAnswer: '2019'
+      correctAnswer: 'Duck',
+      feedback: 'The correct annswer is Duck'
+    },
+    {
+      id: 3,
+      question: 'Which of the following animal went “neigh neigh” ?',
+      answers: [
+        'Cow',
+        'Pig',
+        'Duck',
+        'Horse',
+        'Lamb'
+      ],
+      correctAnswer: 'Horse',
+      feedback: 'The correct annswer is Horse'
+    },
+    {
+      id: 4,
+      question: 'Which of the following animal went “baa baa” ?',
+      answers: [
+        'Cow',
+        'Pig',
+        'Duck',
+        'Horse',
+        'Lamb'
+      ],
+      correctAnswer: 'Lamb',
+      feedback: 'The correct annswer is Lamb'
+    },
+    {
+      id: 5,
+      question: 'Which of the following animal went “moo moo” ?',
+      answers: [
+        'Cow',
+        'Pig',
+        'Duck',
+        'Horse',
+        'Lamb'
+      ],
+      correctAnswer: 'moo moo',
+      feedback: 'The correct annswer is Cow'
     }
   ],
   questionNumber: 0,
   score: 0
 };
+
+
+
+function renderStartPage() {
+  $('.start-page').html(
+  `<header class='quiz-name' role='banner'>
+          <h1>Old MacDonald Quiz</h1>
+      </header>
+      <button id='start' type="button">Let's Begin!</button>`);
+};
+
+function renderQuestionPage();
+function renderFeedbackCorrectPage();
+function renderFeedbackWrongPage();
+function renderFinalPage();
+
+
+function renderQuestion();
+function renderMultipleChoice();
+function renderCorrectAnswer();
+function renderQuestionNumber();
+function renderCurrentScore();
+function renderNextButton();
+
+
+// breakdown of this app:
+/*
+  * the quiz should be rendered to the page
+  * go to the next page when pressing start button
+  * clik the answer on the multiple choice
+  * show the page number
+  * show the progress
+  * show the result
+  * go to the nex page
+  * show overall score on the last page
+  * start over button on the last page brings user back to the first page
+*/
+
+
+
+
 
 /**
  *
@@ -41,3 +128,4 @@ const store = {
  * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
  *
  */
+ 

@@ -5,50 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Quiz App</title>
+  <title>Old MacDonald Quiz App</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
     type="text/css" />
   <link href="app.css" rel="stylesheet" type="text/css" />
+  
 </head>
 
 <body>
-  <section id = 'start-page'> <!--first page name, start buttion--> 
-   <header>
-     <h1>Old Macdonald Quiz</h1>
-   </header>
-   <button id = 'start-quiz' type="button">Start Quiz</button>
+  <!-- section for start page -->
+  <section class='start-page'>
+      <header class='quiz-name' role='banner'>
+          <h1>Old MacDonald Quiz</h1>
+      </header>
+      <button id='start' type="button">Let's Begin!</button>
   </section>
 
 
-  <section class= "quiz-question-page"> 
-    <header>
-      <h1 class = 'title-under-question'>1/5 Old Macdonald Quiz</h1>
-    </header>
-    <h2 class = 'question'></h2>
+<!-- section for quiz page -->
+  <section class= "question-page">
+      <header id='quiz-name'>
+          <h2>Old MacDonald Quiz</h2>
+      </header> 
+      <h3 id='question'><!--question--></h3>
+      <form class='multiple-choice'>
+          <input id='choices' type='radio' name='answers' value=""></input>
+      </form>
+      <div id='question-number'></div>
+      <div id='current-score'></div>
+      <button class='sumbit' type="button">Submit</button>
+      
 
-   <main id = 'quiz-box'> 
-   
-    <input type="radio" name="" value="">animalName<br>
-   
-    
-    <div class = 'current-score'>x Correct x Inccorrect</div>
-    <button id = 'sumbit' type="button">Submit</button>
-    <div class = 'feeback'> Correct Answer</div>
-    <button id = 'next' type="button">Next</button>
-   </main>
- </section>
+ <!--section for feedback page  -->
+  <section class='feedback-page'></section>
+      <div class='feedback'>
+          <div id='correct-answer'></div>
+          <div id='answer-feedback'></div>
+      </div>
+      <button id='next' type="button">Next</button>
+  </section>
 
-<section id = "quiz-page "> </section id= 'quiz-results'>
-  <header>
-    <h1>Old Macdonald Quiz</h1>
-  </header>
-  <button id = 'start-over' type="button">Start Over</button>
-  <div id = "results">Test Results</div>
 
-</section>
+ <!-- section for result page -->
+  <section class="result-page"> 
+      <h1>Old MacDonald Quiz Results</h1>
+      <div id="results"></div>
+      <button class='start-over' type="button">Start Over</button>
+  </section>
 
+
+<!-- script -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
   <script src="app.js"></script>
-</body>
 
+</body>
 </html>
