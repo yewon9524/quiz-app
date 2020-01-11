@@ -1,9 +1,7 @@
-/* eslint-disable strict */
-/**
- * Example store structure
- */
+/* eslint-disable no-console */
+'use strict';
+ 
 const STORE = {
-  // 5 or more questions are required
   questions: [
     {
       id: 1,
@@ -82,6 +80,7 @@ const STORE = {
 /*start page
       generates HTML for start page */
 function generateStartPage() {
+  console.log('start page running');
   return `
     <div class='startPage'>
       <p>Old MACDONALD had a farm<br/>
@@ -92,97 +91,184 @@ function generateStartPage() {
     `;
 }
 
-  /*question page
-      generates all HTML contents in question page*/
+/*question page
+    generates all HTML contents in question page*/
+
+//to generate questions 
 function generateQuestions() {
   let currentQuestion = STORE.questions[STORE.questionNumber].question;
-return currentQuestion;
+  return currentQuestion;
 }
 
-function generateAnswers() {
-  const answers1 = STORE.questions[STORE.questionNumber].answers[0];
-  const answers2 = STORE.questions[STORE.questionNumber].answers[1];
-  const answers3 = STORE.questions[STORE.questionNumber].answers[2];
-  const answers4 = STORE.questions[STORE.questionNumber].answers[3];
-  const answers5 = STORE.questions[STORE.questionNumber].answers[4]; 
-  return `<input type='radio' value='answer'>${answers1}</br>` +
-  `<input type='radio' value='answer'>${answers2}</br>` +
-  `<input type='radio' value='answer'>${answers3}</br>` +
-  `<input type='radio' value='answer'>${answers4}</br>` +
-  `<input type='radio' value='answer'>${answers5}</br>`;
-}
-
-function questionPage() {
+//generate five answer choices 
+function generateAnswerChoices() {
+  let answerChoices = STORE.questions[STORE.questionNumber]
+  
   return `
-    <div class='QuestionPage'>
-      <p>${generateQuestions()}</p>
-      <p>${generateAnswers()}</p>
-      <button id='submit' type="button">Submit</button>
-    
+    <div>
+        <input type='radio' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex='1' required>
+        <label for='choice1'>${answerChoices.answers[0]}</lable>
+    </div>
+    <div>
+        <input type='radio' name='choice1' id='choice2' value='${answerChoices.answers[1]}' tabindex='1' required>
+        <label for='choice2'>${answerChoices.answers[1]}</lable>
+    </div>
+    <div>
+        <input type='radio' name='choice1' id='choice3' value='${answerChoices.answers[2]}' tabindex='1' required>
+        <label for='choice3'>${answerChoices.answers[2]}</lable>
+    </div>
+    <div>
+        <input type='radio' name='choice1' id='choice4' value='${answerChoices.answers[3]}' tabindex='1' required>
+        <label for='choice4'>${answerChoices.answers[3]}</lable>
+    </div>
+    <div>
+        <input type='radio' name='choice1' id='choice5' value='${answerChoices.answers[4]}' tabindex='1' required>
+        <label for='choice5'>${answerChoices.answers[4]}</lable>
+    </div>
+  `;
+}
+
+function generateProgress() {
+  let currentQuestionNumber = STORE.questions[STORE.questionNumber].id;
+  return `Question ${currentQuestionNumber} of 5`;
+}
+
+//all contentes to display in question page 
+function generateQuestionPage() {
+  console.log('question page running')
+  return `
+    <form id='question-form'>
+        <fieldset>
+            <div class='progress'>${generateProgress()}</div>
+            <div class='question'>
+                <legend>${generateQuestions()}</legend>
+            </div>
+            <div class='answerOptions'>${generateAnswerChoices()}</div>
+            <div class='submit'>
+                <button id='submit' type="button">Submit</button>
+        </fieldset>
+    </form>
+    `;
+}  
+
+function generateFeedbackCorrect() {
+  console.log('feedback correct page running');
+
+  return `
+    <div class='feedback-correct'>
+        <h2>You are Correct!</h2>
+        <section class='current-score'>
+            <h3>Current Score</h3>
+            <p>${''} out of 5 Correct</p> 
+        </section>
+        <button id='next' type='button'>Next</button>
     </div>
     `;
 }
-  
 
 
-  
-  function generateProgress() {
-  }
-  function generateScore() {
-  }
-
-
-  /*Feedback page
+/*Feedback page
       generates all HTML contents in question page*/
-function generateFeedback() {
+function generateFeedbackWrong() {
+  console.log('feedback incorrect page running');
+
+  return `
+    <div class='feedback-wrong'>
+        <h2>Incorrect!</h2>
+        <h3>It was ${''}</h3>
+        <section class='current-score'>
+            <h3>Current Score</h3>
+            <p>${''} out of 5 Correct</p> 
+        </section>
+        <button id='next' type='button'>Next</button>
+    </div>
+    `;
 }
 
-  /*Result page
+/*Result page
       generates all HTML contents in question page*/
 function generateResultPage() {
+  console.log('result page running');
+  
+  return `
+    <div class='resultPage>
+        <h2>Quiz Results</h2>
+        <h3>${''} out of 5 Correct!</h3>
+        <button id='start-over' type='button>Start Over</button>
+    </div?
+  `;
 }
 
 
 /*  Render functions  */ 
 function renderFunctions() {
-  
   if (STORE.quizStarted === false) {
     $('main').html(generateStartPage());
     return;
   }
 
   else if (STORE.quizStarted === true) {
-    $('main').html(questionPage());
+    $('main').html(generateQuestionPage());
     return;
   }
 }
 
 /*  handle functions */
 function handleStartButton() {
-  $('main').on('click', '#start', function(event) {
+  $('body').on('click', '#start', function(event) {
     STORE.quizStarted = true;
     renderFunctions();
-    questionPage();
+    generateQuestionPage();
+
     console.log('handleStartButton running');
   }); 
 }
 
 
-function letsRunIt() {
-renderFunctions();
-handleStartButton();
+function handleSubmitButton() {
+  $('body').on('click', '#submit', function(event) {
+    event.preventDefault();
+    
+    //is answer correct? 
+    generateFeedbackCorrect();
+    
 
+
+  });
 }
 
+
+function handleNextButton() {
+}
+
+
+function restart() {
+  STORE.quizStarted = false;
+  STORE.questionNumber = 0;
+  STORE.score = 0; 
+}
+
+function handleRestartButton() {
+  $('body').on('click', '#start-over', function(event) {
+    restart();
+    renderFunctions();
+  });
+}
+
+function letsRunIt() {
+  renderFunctions();
+  handleStartButton();
+  handleSubmitButton();
+  handleNextButton();
+  handleRestartButton();
+}
+
+/*************  let's run it ***************/
 $(letsRunIt);
 
 
-// function handle() {
-//   handleStartButton();
-//   handleAnswerSubmit();
+// function handle() ;
 //   handleNextButton();
-//   handleRestartButton();
-// }
 
 
 // breakdown of this app:
