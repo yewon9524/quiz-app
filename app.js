@@ -15,6 +15,7 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Pig',
+      image: 'images/Farmers.png'
     },
     {
       id: 2,
@@ -27,6 +28,7 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Duck',
+      image: 'images/Oink.png'
     },
     {
       id: 3,
@@ -39,6 +41,7 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Horse',
+      image: 'images/quack.png'
     },
     {
       id: 4,
@@ -51,6 +54,7 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Lamb',
+      image: 'images/neigh.png'
     },
     {
       id: 5,
@@ -63,6 +67,7 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'moo moo',
+      image: 'images/baa.png'
     }
   ],
   quizStarted: false,
@@ -83,6 +88,7 @@ function generateStartPage() {
       E-I-E-I-O<br/>
       And on his farm he had a...</h3>
       <button id='start' type="button">Let's Begin!</button>
+      <img src='/images/Farmers.png'>
     </div>
     `;
 }
@@ -98,7 +104,7 @@ function generateQuestions() {
 
 //generate five answer choices 
 function generateAnswerChoices() {
-  let answerChoices = STORE.questions[STORE.questionNumber]
+  let answerChoices = STORE.questions[STORE.questionNumber];
   
   return `
     <div>
@@ -131,7 +137,8 @@ function generateProgress() {
 
 /***************************** QUESTION PAGE HTML ******************************/
 function generateQuestionPage() {
-  console.log('question page running')
+  console.log('question page running');
+  let currentQuestionNumber = STORE.questions[STORE.questionNumber];
   return `
     <form id='question-form'>
         <fieldset>
@@ -142,6 +149,7 @@ function generateQuestionPage() {
             <div class='answerOptions'>${generateAnswerChoices()}</div>
             <div class='submit'>
                 <button id='submit' type="button">Submit</button>
+                <img src=${currentQuestionNumber.image}>
         </fieldset>
     </form>
     `;
@@ -150,7 +158,7 @@ function generateQuestionPage() {
 
 function generateFeedbackCorrect() {
   console.log('feedback correct page running');
-
+  let currentQuestionNumber = STORE.questions[STORE.questionNumber+1];
   return `
     <div class='feedback-correct'>
         <h2>Correct!</h2>
@@ -158,6 +166,7 @@ function generateFeedbackCorrect() {
         <h3>${STORE.score} out of 5 Correct</h3> 
         </section>
         <button id='next' type='button'>Next</button>
+        <img src=${currentQuestionNumber.image}>
     </div>
     `;
 }
@@ -167,7 +176,7 @@ function generateFeedbackCorrect() {
       generates all HTML contents in question page*/
 function generateFeedbackWrong() {
   console.log('feedback incorrect page running');
-
+  let currentQuestionNumber = STORE.questions[STORE.questionNumber+1];
   return `
     <div class='feedback-wrong'>
         <h2>Incorrect!</h2>
@@ -176,6 +185,7 @@ function generateFeedbackWrong() {
             <h3>${STORE.score} out of 5 Correct</h3>
         </section>
         <button id='next' type='button'>Next</button>
+        <img src=${currentQuestionNumber.image}>
     </div>
     `;
 }
@@ -183,12 +193,13 @@ function generateFeedbackWrong() {
 /************************************ RESULT PAGE HTML ***************************************/
 function generateResultPage() {
   console.log('result page running');
-  
+  let currentQuestionNumber = STORE.questions[STORE.questionNumber];
   return `
     <div class='resultPage'>
         <h2>Quiz Results</h2>
         <h3>${STORE.score} out of 5 Correct!</h3>
         <button id='start-over' type='button'>Start Over</button>
+        <img src=/images/moo.png>
     </div>
   `;
 }
