@@ -8,13 +8,89 @@
 */
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-#quiz_box{
-  display: flex;
-  border: 10px solid  black;
-  background-color: gray;
-  height: 75px;
-  padding: 15px;
-  margin: 10%;
+
+header {
+  text-align: center;
+  color: black;
+}
+.startPage {
+  background: #feb236;
+  padding: 40px;
+  text-align: center;
+}
+.startPage h3 {
+font-family: 'Amatic SC', cursive;
+color: #484f4f;
+}
+#start {
+  background-color: lightgrey;
+  font-size: 18px;
+  padding: 10px 40px;
+  width: 75%;
+  border: 1px solid #4CAF50;
+}
+#start:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.feedback-correct {
+  text-align: center;
+  background: #feb236;
+}
+
+.feedback-wrong {
+  text-align: center;
+  background: #feb236;
+}
+
+#next {
+  background-color: white;
+  border: 1px solid #80ced6;
+  font-size: 16px;
+  width: 50%;
+  padding: 5px 24px;
+}
+#next:hover {
+  background-color: #80ced6; /* Green */
+  color: white;
+}
+
+.resultPage {
+  padding: 40px;
+  text-align: center;
+}
+
+
+#submit {
+  background-color: white;
+  border: 2px solid #008CBA;
+  border-radius: 2px;
+  font-size: 16px;
+  width: 30%;
+  padding: 5px 24px;
+}
+
+#submit:hover {
+    background-color: #008CBA; /* Green */
+    color: white;
+  }
+
+.resultPage {
+  background: #feb236;
+}
+#start-over{
+background-color: lavender;
+  border-radius: 2px;
+  border: #6b5b95 solid 2px;
+  font-size: 20px;
+  width: 50%;
+  padding: 14px 40px;
+} 
+
+#start-over:hover {
+  background-color: #6b5b95 ; /* Green */
+  color: white;
 }

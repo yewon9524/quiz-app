@@ -15,7 +15,6 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Pig',
-      feedback: 'The correct annswer is Pig'
     },
     {
       id: 2,
@@ -28,7 +27,6 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Duck',
-      feedback: 'The correct annswer is Duck'
     },
     {
       id: 3,
@@ -41,7 +39,6 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Horse',
-      feedback: 'The correct annswer is Horse'
     },
     {
       id: 4,
@@ -54,7 +51,6 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'Lamb',
-      feedback: 'The correct annswer is Lamb'
     },
     {
       id: 5,
@@ -67,7 +63,6 @@ const STORE = {
         'Lamb'
       ],
       correctAnswer: 'moo moo',
-      feedback: 'The correct annswer is Cow'
     }
   ],
   quizStarted: false,
@@ -84,9 +79,9 @@ function generateStartPage() {
   console.log('start page running');
   return `
     <div class='startPage'>
-      <p>Old MACDONALD had a farm<br/>
+      <h3>Old MACDONALD had a farm<br/>
       E-I-E-I-O<br/>
-      And on his farm he had a...</p>
+      And on his farm he had a...</h3>
       <button id='start' type="button">Let's Begin!</button>
     </div>
     `;
@@ -157,14 +152,13 @@ function generateFeedbackCorrect() {
   console.log('feedback correct page running');
 
   return `
-    <form class='feedback-correct'>
+    <div class='feedback-correct'>
         <h2>Correct!</h2>
         <section class='currentScore'>
-            <h3>Current Score</h3>
-            <p>${STORE.score} out of 5 Correct</p> 
+        <h3>${STORE.score} out of 5 Correct</h3> 
         </section>
         <button id='next' type='button'>Next</button>
-    </form>
+    </div>
     `;
 }
 
@@ -179,8 +173,7 @@ function generateFeedbackWrong() {
         <h2>Incorrect!</h2>
         <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
         <section class='currentScore'>
-            <h3>Current Score</h3>
-            <p>${STORE.score} out of 5 Correct</p> 
+            <h3>${STORE.score} out of 5 Correct</h3>
         </section>
         <button id='next' type='button'>Next</button>
     </div>
