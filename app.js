@@ -174,26 +174,36 @@ function generateFeedbackCorrect() {
 
 /*Feedback page
       generates all HTML contents in question page*/
-function generateFeedbackWrong() {
-  console.log('feedback incorrect page running');
-  let currentQuestionNumber = STORE.questions[STORE.questionNumber+1];
-  return `
-    <div class='feedback-wrong'>
-        <h2>Incorrect!</h2>
-        <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
-        <section class='currentScore'>
-            <h3>${STORE.score} out of 5 Correct</h3>
-        </section>
-        <button id='next' type='button'>Next</button>
-        <img src=${currentQuestionNumber.image}>
-    </div>
-    `;
-}
+      function generateFeedbackWrong() {
+        console.log('feedback incorrect page running');
+      
+        let feedbackNextHTML;
+      
+        if (STORE.questionNumber < STORE.questions.length - 2) {
+          const nextQuestion = STORE.questions[STORE.questionNumber+1];
+          feedbackNextHTML = `<button id='next' type='button'>Next</button>
+              <img src=${nextQuestion.image}>`;
+        } else {
+          feedbackNextHTML = `<button id='start-over' type='button'>Start Over</button>
+              <img src=/images/moo.png>`;
+        }
+      
+        return `
+          <div class='feedback-wrong'>
+              <h2>Incorrect!</h2>
+              <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
+              <section class='currentScore'>
+                  <h3>${STORE.score} out of 5 Correct</h3>
+              </section>
+              ${feedbackNextHTML}
+          </div>
+          `;
+      }
 
 /************************************ RESULT PAGE HTML ***************************************/
 function generateResultPage() {
   console.log('result page running');
-  let currentQuestionNumber = STORE.questions[STORE.questionNumber];
+  
   return `
     <div class='resultPage'>
         <h2>Quiz Results</h2>
