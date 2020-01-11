@@ -70,6 +70,7 @@ const STORE = {
     }
   ],
   quizStarted: false,
+  incorrect: false,
   questionNumber: 0,
   score: 0
 };
@@ -156,10 +157,10 @@ function generateFeedbackCorrect() {
 
   return `
     <div class='feedback-correct'>
-        <h2>You are Correct!</h2>
+        <h2>Correct!</h2>
         <section class='current-score'>
             <h3>Current Score</h3>
-            <p>${''} out of 5 Correct</p> 
+            <p>${STORE.score} out of 5 Correct</p> 
         </section>
         <button id='next' type='button'>Next</button>
     </div>
@@ -175,10 +176,10 @@ function generateFeedbackWrong() {
   return `
     <div class='feedback-wrong'>
         <h2>Incorrect!</h2>
-        <h3>It was ${''}</h3>
+        <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
         <section class='current-score'>
             <h3>Current Score</h3>
-            <p>${''} out of 5 Correct</p> 
+            <p>${STORE.score} out of 5 Correct</p> 
         </section>
         <button id='next' type='button'>Next</button>
     </div>
@@ -193,9 +194,9 @@ function generateResultPage() {
   return `
     <div class='resultPage>
         <h2>Quiz Results</h2>
-        <h3>${''} out of 5 Correct!</h3>
+        <h3>${STORE.score} out of 5 Correct!</h3>
         <button id='start-over' type='button>Start Over</button>
-    </div?
+    </div>
   `;
 }
 
@@ -207,10 +208,11 @@ function renderFunctions() {
     return;
   }
 
-  else if (STORE.quizStarted === true) {
+  else if (STORE.quizStarted === true && STORE.questionNumber >=0 && STORE.questionNumber < 5) {
     $('main').html(generateQuestionPage());
     return;
   }
+
 }
 
 /*  handle functions */
@@ -228,12 +230,20 @@ function handleStartButton() {
 function handleSubmitButton() {
   $('body').on('click', '#submit', function(event) {
     event.preventDefault();
-    
+
     //is answer correct? 
-    generateFeedbackCorrect();
+    // :checked selector works for checkboxes, radio buttons, 
+    //     and options of select elements.
+    let choice = $('input:checked').val();
+    let currentQuestion = STORE.questions[STORE.questionNumber];
     
-
-
+    if (choice === currentQuestion.correctAnswer) {
+      STORE.score++;
+      STORE.incorrect = false;
+    } else {
+      STORE.incorrect = true;
+    }
+    generateFeedbackCorrect();
   });
 }
 
