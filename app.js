@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable no-console */
 'use strict';
  
 const STORE = {
@@ -78,8 +79,7 @@ const STORE = {
 
 /*  Generate all HTML contents in the app  */
 
-/*start page
-      generates HTML for start page */
+/******************************** START PAGE HTML ***********************************/
 function generateStartPage() {
   console.log('start page running');
   return `
@@ -134,7 +134,7 @@ function generateProgress() {
   return `Question ${currentQuestionNumber} of 5`;
 }
 
-//all contentes to display in question page 
+/***************************** QUESTION PAGE HTML ******************************/
 function generateQuestionPage() {
   console.log('question page running')
   return `
@@ -152,18 +152,19 @@ function generateQuestionPage() {
     `;
 }  
 
+
 function generateFeedbackCorrect() {
   console.log('feedback correct page running');
 
   return `
-    <div class='feedback-correct'>
+    <form class='feedback-correct'>
         <h2>Correct!</h2>
-        <section class='current-score'>
+        <section class='currentScore'>
             <h3>Current Score</h3>
             <p>${STORE.score} out of 5 Correct</p> 
         </section>
         <button id='next' type='button'>Next</button>
-    </div>
+    </form>
     `;
 }
 
@@ -177,7 +178,7 @@ function generateFeedbackWrong() {
     <div class='feedback-wrong'>
         <h2>Incorrect!</h2>
         <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
-        <section class='current-score'>
+        <section class='currentScore'>
             <h3>Current Score</h3>
             <p>${STORE.score} out of 5 Correct</p> 
         </section>
@@ -186,16 +187,15 @@ function generateFeedbackWrong() {
     `;
 }
 
-/*Result page
-      generates all HTML contents in question page*/
+/************************************ RESULT PAGE HTML ***************************************/
 function generateResultPage() {
   console.log('result page running');
   
   return `
-    <div class='resultPage>
+    <div class='resultPage'>
         <h2>Quiz Results</h2>
         <h3>${STORE.score} out of 5 Correct!</h3>
-        <button id='start-over' type='button>Start Over</button>
+        <button id='start-over' type='button'>Start Over</button>
     </div>
   `;
 }
@@ -213,14 +213,24 @@ function renderFunctions() {
     return;
   }
 
+  else if (STORE.questionNumber > 4) {
+    $('main').html(generateResultPage());
+    return;
+  }
 }
+
+// function renderSubmit() {
+//   if ()
+// }
+
+
 
 /*  handle functions */
 function handleStartButton() {
   $('body').on('click', '#start', function(event) {
     STORE.quizStarted = true;
     renderFunctions();
-    generateQuestionPage();
+    // generateQuestionPage();
 
     console.log('handleStartButton running');
   }); 
@@ -239,16 +249,27 @@ function handleSubmitButton() {
     
     if (choice === currentQuestion.correctAnswer) {
       STORE.score++;
-      STORE.incorrect = false;
+      $('main').html(generateFeedbackCorrect());
+      
+      // STORE.incorrect = false;
     } else {
-      STORE.incorrect = true;
+      
+      $('main').html(generateFeedbackWrong());
+      // STORE.incorrect = true;
     }
-    generateFeedbackCorrect();
+    
+    // renderFunctions();
+    // generateFeedbackCorrect();
   });
 }
 
 
 function handleNextButton() {
+
+  $('body').on('click', '#next', function(event) {
+    STORE.questionNumber++;
+    renderFunctions();
+  });
 }
 
 
