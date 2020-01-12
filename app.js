@@ -66,7 +66,7 @@ const STORE = {
         'Horse',
         'Lamb'
       ],
-      correctAnswer: 'moo moo',
+      correctAnswer: 'Cow',
       image: 'images/baa.png'
     }
   ],
@@ -155,37 +155,43 @@ function generateQuestionPage() {
     `;
 }  
 
-
+/***************************** CORRECT PAGES HTML ******************************/
 function generateFeedbackCorrect() {
   console.log('feedback correct page running');
-  let currentQuestionNumber = STORE.questions[STORE.questionNumber+1];
+  let feedbackNextHTML;
+      
+  if (STORE.questionNumber < STORE.questions.length - 1) {
+    const nextQuestion = STORE.questions[STORE.questionNumber+1];
+    feedbackNextHTML = `<button id='next' type='button'>Next</button>
+              <img src=${nextQuestion.image}>`;
+  } else {
+    feedbackNextHTML = generateResultPage();
+  }
+
   return `
     <div class='feedback-correct'>
         <h2>Correct!</h2>
         <section class='currentScore'>
         <h3>${STORE.score} out of 5 Correct</h3> 
         </section>
-        <button id='next' type='button'>Next</button>
-        <img src=${currentQuestionNumber.image}>
+      ${feedbackNextHTML}
     </div>
     `;
 }
 
 
-/*Feedback page
-      generates all HTML contents in question page*/
+/***************************** WRONG PAGES HTML ******************************/
 function generateFeedbackWrong() {
   console.log('feedback incorrect page running');
       
   let feedbackNextHTML;
       
-  if (STORE.questionNumber < STORE.questions.length - 2) {
+  if (STORE.questionNumber < STORE.questions.length - 1) {
     const nextQuestion = STORE.questions[STORE.questionNumber+1];
     feedbackNextHTML = `<button id='next' type='button'>Next</button>
               <img src=${nextQuestion.image}>`;
   } else {
-    feedbackNextHTML = `<button id='start-over' type='button'>Start Over</button>
-              <img src=/images/moo.png>`;
+    feedbackNextHTML = generateResultPage();
   }
       
   return `
@@ -302,8 +308,8 @@ function handleRestartButton() {
 
 function enableSubmitButton(){
   $('body').on('click', '.answer', function(event) {
-  console.log('enable script running')
-  $('#submit').attr("disabled", false);
+    console.log('enable script running');
+    $('#submit').attr('disabled', false);
   }); 
 }
 
