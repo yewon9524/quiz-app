@@ -11,8 +11,32 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+#body{
+  display: flex;
+  flex-direction: column;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+#main{
+  text-align: center;
+}
+.answerButton{
+  display: flex;
+  flex-direction: initial; 
+}
+.answerOptions{
+  display: inline-block;
+  width: 30%;
+  height: 20px;
 
-header {
+}
+
+
+
+.quiz-name {
+  display: block;
   text-align: center;
   color: black;
 }

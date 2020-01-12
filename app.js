@@ -107,26 +107,26 @@ function generateAnswerChoices() {
   let answerChoices = STORE.questions[STORE.questionNumber];
   
   return `
-    <div>
+    <a class = 'answerButton'>
         <input type='radio' class = 'answer' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex='1' required>
         <label for='choice1'>${answerChoices.answers[0]}</lable>
-    </div>
-    <div>
+    </a>
+    <a class = 'answerButton'>
         <input type='radio' class = 'answer' name='choice1' id='choice2' value='${answerChoices.answers[1]}' tabindex='1' required>
         <label for='choice2'>${answerChoices.answers[1]}</lable>
-    </div>
-    <div>
+    </a>
+    <a class = 'answerButton'>
         <input type='radio' class = 'answer' name='choice1' id='choice3' value='${answerChoices.answers[2]}' tabindex='1' required>
         <label for='choice3'>${answerChoices.answers[2]}</lable>
-    </div>
-    <div>
+    </a>
+    <a class = 'answerButton'>
         <input type='radio' class = 'answer' name='choice1' id='choice4' value='${answerChoices.answers[3]}' tabindex='1' required>
         <label for='choice4'>${answerChoices.answers[3]}</lable>
-    </div>
-    <div>
+    </a>
+    <a class = 'answerButton'>
         <input type='radio' class = 'answer' name='choice1' id='choice5' value='${answerChoices.answers[4]}' tabindex='1' required>
         <label for='choice5'>${answerChoices.answers[4]}</lable>
-    </div>
+    </a>
   `;
 }
 
@@ -312,6 +312,11 @@ function enableSubmitButton(){
     $('#submit').attr('disabled', false);
   }); 
 }
+// function preventButtonRefresh(){
+//   $('body').on('click', '.answerButton', function(event) {
+//     event.preventDefault();
+// });
+// }
 
 function letsRunIt() {
   renderFunctions();
@@ -320,6 +325,7 @@ function letsRunIt() {
   handleNextButton();
   handleRestartButton();
   enableSubmitButton();
+  preventButtonRefresh();
 }
 
 /*************  let's run it ***************/
