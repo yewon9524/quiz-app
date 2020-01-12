@@ -142,10 +142,9 @@ function generateQuestionPage() {
   return `
     <form id='question-form'>
         <fieldset>
-            <div class='progress'>${generateProgress()}</div>
-            <div class='question'>
-                <legend>${generateQuestions()}</legend>
-            </div>
+            <p class='progress'>${generateProgress()}</p>          
+            <p class='question'>${generateQuestions()}</p>
+            
             <div class='answerOptions'>${generateAnswerChoices()}</div>
             <div class='submit'>
                 <button id='submit' disabled type="button">Submit</button>

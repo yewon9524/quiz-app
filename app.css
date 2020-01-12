@@ -1,4 +1,4 @@
-/* Your styles should be mobile-first and responsive */
+Your styles should be mobile-first and responsive
 
 /** 
   * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
@@ -10,10 +10,14 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+/* html {
+  background-color: #feb236
+} */
 
 #body{
   display: flex;
   flex-direction: column;
+  
 }
 img {
   max-width: 100%;
@@ -30,6 +34,11 @@ img {
   display: inline-block;
   width: 30%;
   height: 20px;
+
+}
+.question{
+
+font-size: 30px;
 
 }
 
@@ -51,9 +60,10 @@ color: #484f4f;
 }
 #start {
   background-color: lightgrey;
-  font-size: 18px;
   padding: 10px 40px;
-  width: 75%;
+  font-size: 20px;
+  width: 70%;
+  height: 50px;
   border: 1px solid #4CAF50;
 }
 #start:hover {
@@ -92,14 +102,20 @@ color: #484f4f;
   background-color: white;
   border: 2px solid #008CBA;
   border-radius: 2px;
-  font-size: 16px;
-  width: 30%;
+  font-size: 22px;
+  width: 55%;
+  height: 50px;
   padding: 5px 24px;
 }
 
 #submit:hover {
     background-color: #008CBA; /* Green */
     color: white;
+  }
+  #submit:disabled:hover {
+    background-color: grey; /* Green */
+    color: white;
+    cursor: not-allowed;
   }
 
 .resultPage {
