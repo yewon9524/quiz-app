@@ -108,23 +108,23 @@ function generateAnswerChoices() {
   
   return `
     <div>
-        <input type='radio' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex='1' required>
+        <input type='radio' class = 'answer' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex='1' required>
         <label for='choice1'>${answerChoices.answers[0]}</lable>
     </div>
     <div>
-        <input type='radio' name='choice1' id='choice2' value='${answerChoices.answers[1]}' tabindex='1' required>
+        <input type='radio' class = 'answer' name='choice1' id='choice2' value='${answerChoices.answers[1]}' tabindex='1' required>
         <label for='choice2'>${answerChoices.answers[1]}</lable>
     </div>
     <div>
-        <input type='radio' name='choice1' id='choice3' value='${answerChoices.answers[2]}' tabindex='1' required>
+        <input type='radio' class = 'answer' name='choice1' id='choice3' value='${answerChoices.answers[2]}' tabindex='1' required>
         <label for='choice3'>${answerChoices.answers[2]}</lable>
     </div>
     <div>
-        <input type='radio' name='choice1' id='choice4' value='${answerChoices.answers[3]}' tabindex='1' required>
+        <input type='radio' class = 'answer' name='choice1' id='choice4' value='${answerChoices.answers[3]}' tabindex='1' required>
         <label for='choice4'>${answerChoices.answers[3]}</lable>
     </div>
     <div>
-        <input type='radio' name='choice1' id='choice5' value='${answerChoices.answers[4]}' tabindex='1' required>
+        <input type='radio' class = 'answer' name='choice1' id='choice5' value='${answerChoices.answers[4]}' tabindex='1' required>
         <label for='choice5'>${answerChoices.answers[4]}</lable>
     </div>
   `;
@@ -148,7 +148,7 @@ function generateQuestionPage() {
             </div>
             <div class='answerOptions'>${generateAnswerChoices()}</div>
             <div class='submit'>
-                <button id='submit' type="button">Submit</button>
+                <button id='submit' disabled type="button">Submit</button>
                 <img src=${currentQuestionNumber.image}>
         </fieldset>
     </form>
@@ -174,21 +174,21 @@ function generateFeedbackCorrect() {
 
 /*Feedback page
       generates all HTML contents in question page*/
-      function generateFeedbackWrong() {
-        console.log('feedback incorrect page running');
+function generateFeedbackWrong() {
+  console.log('feedback incorrect page running');
       
-        let feedbackNextHTML;
+  let feedbackNextHTML;
       
-        if (STORE.questionNumber < STORE.questions.length - 2) {
-          const nextQuestion = STORE.questions[STORE.questionNumber+1];
-          feedbackNextHTML = `<button id='next' type='button'>Next</button>
+  if (STORE.questionNumber < STORE.questions.length - 2) {
+    const nextQuestion = STORE.questions[STORE.questionNumber+1];
+    feedbackNextHTML = `<button id='next' type='button'>Next</button>
               <img src=${nextQuestion.image}>`;
-        } else {
-          feedbackNextHTML = `<button id='start-over' type='button'>Start Over</button>
+  } else {
+    feedbackNextHTML = `<button id='start-over' type='button'>Start Over</button>
               <img src=/images/moo.png>`;
-        }
+  }
       
-        return `
+  return `
           <div class='feedback-wrong'>
               <h2>Incorrect!</h2>
               <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
@@ -198,7 +198,7 @@ function generateFeedbackCorrect() {
               ${feedbackNextHTML}
           </div>
           `;
-      }
+}
 
 /************************************ RESULT PAGE HTML ***************************************/
 function generateResultPage() {
@@ -300,12 +300,20 @@ function handleRestartButton() {
   });
 }
 
+function enableSubmitButton(){
+  $('body').on('click', '.answer', function(event) {
+  console.log('enable script running')
+  $('#submit').attr("disabled", false);
+  }); 
+}
+
 function letsRunIt() {
   renderFunctions();
   handleStartButton();
   handleSubmitButton();
   handleNextButton();
   handleRestartButton();
+  enableSubmitButton();
 }
 
 /*************  let's run it ***************/
