@@ -88,7 +88,7 @@ function generateStartPage() {
       E-I-E-I-O<br/>
       And on his farm he had a...</h3>
       <button id='start' type="button">Let's Begin!</button>
-      <img src='/images/Farmers.png'>
+      <img src='images/Farmers.png'>
     </div>
     `;
 }
@@ -214,7 +214,7 @@ function generateResultPage() {
         <h2>Quiz Results</h2>
         <h3>${STORE.score} out of 5 Correct!</h3>
         <button id='start-over' type='button'>Start Over</button>
-        <img src=/images/moo.png>
+        <img src= 'images/moo.png'>
     </section>
   `;
 }
