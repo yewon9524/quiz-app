@@ -107,26 +107,28 @@ function generateAnswerChoices() {
   let answerChoices = STORE.questions[STORE.questionNumber];
   
   return `
-    <a class = 'answerButton'>
-        <input type='radio' class = 'answer' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex='1' required>
-        <label for='choice1'>${answerChoices.answers[0]}</lable>
+ 
+    <a class = 'answerButton' tabindex='0' >
+        <input type='radio' class = 'answer' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex=1 required>
+        <label for='choice1' >${answerChoices.answers[0]}</lable>
     </a>
-    <a class = 'answerButton'>
-        <input type='radio' class = 'answer' name='choice1' id='choice2' value='${answerChoices.answers[1]}' tabindex='1' required>
+    <a class = 'answerButton' tabindex='0'>
+        <input type='radio' class = 'answer' name='choice1' id='choice2' value='${answerChoices.answers[1]}' tabindex=2 required>
         <label for='choice2'>${answerChoices.answers[1]}</lable>
     </a>
-    <a class = 'answerButton'>
-        <input type='radio' class = 'answer' name='choice1' id='choice3' value='${answerChoices.answers[2]}' tabindex='1' required>
+    <a class = 'answerButton' tabindex='0'>
+        <input type='radio' class = 'answer' name='choice1' id='choice3' value='${answerChoices.answers[2]}' tabindex=3 required>
         <label for='choice3'>${answerChoices.answers[2]}</lable>
     </a>
-    <a class = 'answerButton'>
-        <input type='radio' class = 'answer' name='choice1' id='choice4' value='${answerChoices.answers[3]}' tabindex='1' required>
+    <a class = 'answerButton' tabindex='0'>
+        <input type='radio' class = 'answer' name='choice1' id='choice4' value='${answerChoices.answers[3]}' tabindex=4 required>
         <label for='choice4'>${answerChoices.answers[3]}</lable>
     </a>
-    <a class = 'answerButton'>
-        <input type='radio' class = 'answer' name='choice1' id='choice5' value='${answerChoices.answers[4]}' tabindex='1' required>
+    <a class = 'answerButton' tabindex='0'>
+        <input type='radio' class = 'answer' name='choice1' id='choice5' value='${answerChoices.answers[4]}' tabindex=5 required>
         <label for='choice5'>${answerChoices.answers[4]}</lable>
     </a>
+    </div>
   `;
 }
 
@@ -140,7 +142,7 @@ function generateQuestionPage() {
   console.log('question page running');
   let currentQuestionNumber = STORE.questions[STORE.questionNumber];
   return `
-    <form id='question-form'>
+    <form id='question-form' >
         <fieldset>
             <p class='progress'>${generateProgress()}</p>          
             <p class='question'>${generateQuestions()}</p>
@@ -164,7 +166,8 @@ function generateFeedbackCorrect() {
     feedbackNextHTML = `<button id='next' type='button'>Next</button>
               <img src=${nextQuestion.image}>`;
   } else {
-    feedbackNextHTML = generateResultPage();
+    feedbackNextHTML = `<button id='next' type='button'>Next</button>
+    <img src= 'images/moo.png'>`;
   }
 
   return `
@@ -190,7 +193,8 @@ function generateFeedbackWrong() {
     feedbackNextHTML = `<button id='next' type='button'>Next</button>
               <img src=${nextQuestion.image}>`;
   } else {
-    feedbackNextHTML = generateResultPage();
+    feedbackNextHTML = `<button id='next' type='button'>Next</button>
+    <img src= 'images/moo.png'>`;
   }
       
   return `
@@ -227,7 +231,7 @@ function renderFunctions() {
     return;
   }
 
-  else if (STORE.quizStarted === true && STORE.questionNumber >=0 && STORE.questionNumber < 5) {
+  else if (STORE.questionNumber >=0 && STORE.questionNumber < 5) {
     $('main').html(generateQuestionPage());
     return;
   }
@@ -237,11 +241,6 @@ function renderFunctions() {
     return;
   }
 }
-
-// function renderSubmit() {
-//   if ()
-// }
-
 
 
 /*  handle functions */
