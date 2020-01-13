@@ -148,8 +148,8 @@ function generateQuestionPage() {
             <div class='answerOptions'>${generateAnswerChoices()}</div>
             <div class='submit'>
                 <button id='submit' disabled type="button">Submit</button>
-                <img src=${currentQuestionNumber.image}>
-        </fieldset>
+               </fieldset> 
+        <img src=${currentQuestionNumber.image}>
     </form>
     `;
 }  
@@ -168,13 +168,13 @@ function generateFeedbackCorrect() {
   }
 
   return `
-    <div class='feedback-correct'>
+    <section class='feedback-correct'>
         <h2>Correct!</h2>
         <section class='currentScore'>
         <h3>${STORE.score} out of 5 Correct</h3> 
         </section>
       ${feedbackNextHTML}
-    </div>
+    </section>
     `;
 }
 
@@ -194,14 +194,14 @@ function generateFeedbackWrong() {
   }
       
   return `
-          <div class='feedback-wrong'>
+          <section class='feedback-wrong'>
               <h2>Incorrect!</h2>
               <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
               <section class='currentScore'>
                   <h3>${STORE.score} out of 5 Correct</h3>
               </section>
               ${feedbackNextHTML}
-          </div>
+          </section>
           `;
 }
 
@@ -210,12 +210,12 @@ function generateResultPage() {
   console.log('result page running');
   
   return `
-    <div class='resultPage'>
+    <section class='resultPage'>
         <h2>Quiz Results</h2>
         <h3>${STORE.score} out of 5 Correct!</h3>
         <button id='start-over' type='button'>Start Over</button>
         <img src=/images/moo.png>
-    </div>
+    </section>
   `;
 }
 
