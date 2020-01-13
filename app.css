@@ -10,12 +10,12 @@ Your styles should be mobile-first and responsive
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
- /* html {
+  html {
   background-color: #feb236
 } 
-.body.main {
+/* .body.main {
   background-color: #feb236
-}  */
+}   */
 
 #body{
   display: flex;
@@ -165,6 +165,7 @@ color: #1B7742;
 
 .resultPage {
   background: #feb236;
+  padding-top: 0px;
 }
 #start-over{
 background-color: lavender;
@@ -210,7 +211,7 @@ background-color: lavender;
 
 /************************************* Desktop View ************************************/
 
-@media (min-width: 1025px){
+@media (min-width: 1024px){
   .answerOptions label {
     /* display: inline-block; */
     background-color: rgb(235, 235, 235);
@@ -230,16 +231,18 @@ background-color: lavender;
     padding-right: 15%;
   }
   #submit {
-    width: 30%;
+    width: 22%;
+    margin-top: 20px;
   }
  #next{
-  width: 30%;
+  width: 22%;
+  
  }
  #start-over{
-  width: 30%;
+  width: 20%;
  }
  #start{
-  width: 30%;
+  width: 20%;
  }
  img {
    max-width: 40%;
