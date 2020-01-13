@@ -210,6 +210,44 @@ background-color: lavender;
 
 /************************************* Desktop View ************************************/
 
-@media (min-width: 768px){
+@media (min-width: 1025px){
+  .answerOptions label {
+    /* display: inline-block; */
+    background-color: rgb(235, 235, 235);
+    padding: 10px 20px;
+    font-family: 'Coustard', serif;
+    font-size: 25px;
+    border: 2px solid #1B7742;
+    border-radius: 4px;
+    margin: 5px;
+    /* width: 40%; */
+  }
+  .answerOptions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  #submit {
+    width: 30%;
+  }
+ #next{
+  width: 30%;
+ }
+ #start-over{
+  width: 30%;
+ }
+ #start{
+  width: 30%;
+ }
+ img {
+   max-width: 40%;
+  /*height: auto; */
+   position: fixed;
+  bottom:0px;
+    right:0%; 
+  }
   
+
 }

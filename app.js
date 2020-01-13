@@ -83,13 +83,13 @@ const STORE = {
 function generateStartPage() {
   console.log('start page running');
   return `
-    <div class='startPage'>
+    <section class='startPage'>
       <h3>Old MACDONALD had a farm<br/>
       E-I-E-I-O<br/>
       And on his farm he had a...</h3>
       <button id='start' type="button">Let's Begin!</button>
       <img src='images/Farmers.png'>
-    </div>
+    </section>
     `;
 }
 
@@ -149,8 +149,8 @@ function generateQuestionPage() {
             <div class='submit'>
                 <button id='submit' disabled type="button">Submit</button>
                </fieldset> 
-        <img src=${currentQuestionNumber.image}>
-    </form>
+        </form>
+    <img src=${currentQuestionNumber.image}>
     `;
 }  
 
