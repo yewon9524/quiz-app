@@ -140,6 +140,8 @@ color: #1B7742;
 .resultPage {
   padding: 40px;
   text-align: center;
+  color: #5100B3;
+  font-size: 20px;
 }
 
 
@@ -250,6 +252,13 @@ background-color: lavender;
    position: fixed;
   bottom:0px;
     right:0%; 
+  }
+  .resultPage {
+    padding: 40px;
+    padding-top: 15px;
+    text-align: center;
+    color: #5100B3;
+    font-size: 25px;
   }
   
 
