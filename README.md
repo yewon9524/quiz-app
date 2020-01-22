@@ -2,4 +2,4 @@
 Charles Pulliam and Raina Shin worked on this.
 
 
-### access live page at: https://yewon9524.github.io/QuizApp/
+### access live page at: https://yewon9524.github.io/quiz-app/
