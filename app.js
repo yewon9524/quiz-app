@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-console */
-'use strict';
- 
 const STORE = {
   questions: [
     {
@@ -81,7 +77,6 @@ const STORE = {
 
 /******************************** START PAGE HTML ***********************************/
 function generateStartPage() {
-  console.log('start page running');
   return `
     <section class='startPage'>
       <h3>Old MACDONALD had a farm<br/>
@@ -93,8 +88,7 @@ function generateStartPage() {
     `;
 }
 
-/*question page
-    generates all HTML contents in question page*/
+/* Generate all HTML contents in question page*/
 
 //to generate questions 
 function generateQuestions() {
@@ -107,7 +101,6 @@ function generateAnswerChoices() {
   let answerChoices = STORE.questions[STORE.questionNumber];
   
   return `
- 
     <a class = 'answerButton' tabindex='0' >
         <input type='radio' class = 'answer' name='choice1' id='choice1' value='${answerChoices.answers[0]}' tabindex=1 required>
         <label for='choice1' >${answerChoices.answers[0]}</lable>
@@ -139,7 +132,6 @@ function generateProgress() {
 
 /***************************** QUESTION PAGE HTML ******************************/
 function generateQuestionPage() {
-  console.log('question page running');
   let currentQuestionNumber = STORE.questions[STORE.questionNumber];
   return `
     <form id='question-form' >
@@ -158,7 +150,6 @@ function generateQuestionPage() {
 
 /***************************** CORRECT PAGES HTML ******************************/
 function generateFeedbackCorrect() {
-  console.log('feedback correct page running');
   let feedbackNextHTML;
       
   if (STORE.questionNumber < STORE.questions.length - 1) {
@@ -181,38 +172,37 @@ function generateFeedbackCorrect() {
     `;
 }
 
-
 /***************************** WRONG PAGES HTML ******************************/
 function generateFeedbackWrong() {
-  console.log('feedback incorrect page running');
-      
   let feedbackNextHTML;
       
   if (STORE.questionNumber < STORE.questions.length - 1) {
     const nextQuestion = STORE.questions[STORE.questionNumber+1];
-    feedbackNextHTML = `<button id='next' type='button'>Next</button>
-              <img src=${nextQuestion.image}>`;
+    feedbackNextHTML = `
+      <button id='next' type='button'>Next</button>
+      <img src=${nextQuestion.image}>
+    `;
   } else {
-    feedbackNextHTML = `<button id='next' type='button'>Next</button>
-    <img src= 'images/moo.png'>`;
+    feedbackNextHTML = `
+      <button id='next' type='button'>Next</button>
+      <img src= 'images/moo.png'>
+    `;
   }
       
   return `
-          <section class='feedback-wrong'>
-              <h2>Incorrect!</h2>
-              <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
-              <section class='currentScore'>
-                  <h3>${STORE.score} out of 5 Correct</h3>
-              </section>
-              ${feedbackNextHTML}
-          </section>
-          `;
+    <section class='feedback-wrong'>
+        <h2>Incorrect!</h2>
+        <h3>The answer was ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
+        <section class='currentScore'>
+            <h3>${STORE.score} out of 5 Correct</h3>
+        </section>
+        ${feedbackNextHTML}
+    </section>
+  `;
 }
 
 /************************************ RESULT PAGE HTML ***************************************/
 function generateResultPage() {
-  console.log('result page running');
-  
   return `
     <section class='resultPage'>
         <h2>Quiz Results</h2>
@@ -242,54 +232,36 @@ function renderFunctions() {
   }
 }
 
-
 /*  handle functions */
 function handleStartButton() {
-  $('body').on('click', '#start', function(event) {
+  $('body').on('click', '#start', () => {
     STORE.quizStarted = true;
     renderFunctions();
-    // generateQuestionPage();
-
-    console.log('handleStartButton running');
   }); 
 }
 
-
 function handleSubmitButton() {
-  $('body').on('click', '#submit', function(event) {
+  $('body').on('click', '#submit', (event) => {
     event.preventDefault();
 
-    //is answer correct? 
-    // :checked selector works for checkboxes, radio buttons, 
-    //     and options of select elements.
     let choice = $('input:checked').val();
     let currentQuestion = STORE.questions[STORE.questionNumber];
     
     if (choice === currentQuestion.correctAnswer) {
       STORE.score++;
       $('main').html(generateFeedbackCorrect());
-      
-      // STORE.incorrect = false;
     } else {
-      
       $('main').html(generateFeedbackWrong());
-      // STORE.incorrect = true;
     }
-    
-    // renderFunctions();
-    // generateFeedbackCorrect();
   });
 }
 
-
 function handleNextButton() {
-
-  $('body').on('click', '#next', function(event) {
+  $('body').on('click', '#next', () => {
     STORE.questionNumber++;
     renderFunctions();
   });
 }
-
 
 function restart() {
   STORE.quizStarted = false;
@@ -298,23 +270,17 @@ function restart() {
 }
 
 function handleRestartButton() {
-  $('body').on('click', '#start-over', function(event) {
+  $('body').on('click', '#start-over', () => {
     restart();
     renderFunctions();
   });
 }
 
 function enableSubmitButton(){
-  $('body').on('click', '.answer', function(event) {
-    console.log('enable script running');
+  $('body').on('click', '.answer', () => {
     $('#submit').attr('disabled', false);
   }); 
 }
-// function preventButtonRefresh(){
-//   $('body').on('click', '.answerButton', function(event) {
-//     event.preventDefault();
-// });
-// }
 
 function letsRunIt() {
   renderFunctions();
@@ -323,44 +289,7 @@ function letsRunIt() {
   handleNextButton();
   handleRestartButton();
   enableSubmitButton();
-  preventButtonRefresh();
 }
 
 /*************  let's run it ***************/
 $(letsRunIt);
-
-
-// function handle() ;
-//   handleNextButton();
-
-
-// breakdown of this app:
-/*
-  * the quiz should be rendered to the page
-  * go to the next page when pressing start button
-  * clik the answer on the multiple choice
-  * show the page number
-  * show the progress
-  * show the result
-  * go to the nex page
-  * show overall score on the last page
-  * start over button on the last page brings user back to the first page
-*/
-
-
-
-
-
-/**
- *
- * Your app should include a render() function, that regenerates
- * the view each time the store is updated. See your course
- * material, consult your instructor, and reference the slides
- * for more details.
- *
- * NO additional HTML elements should be added to the index.html file.
- *
- * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
- *
- */
- 
